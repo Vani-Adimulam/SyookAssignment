@@ -1,16 +1,38 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-// mongoose.connect("mongodb://127.0.0.1:27017/encrypted-timeseries");
-mongoose.connect(process.env.DB_URI);
+// // mongoose.connect("mongodb://127.0.0.1:27017/encrypted-timeseries");
+// mongoose.connect(process.env.DB_URI);
 
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-db.on("err", (err) => {
-  console.error.bind(console, "error in connection to db", err);
-});
+// mongoose.connect(uri, options)
+//   .then(() => {
+//     console.log('Connected to MongoDB');
+//   })
+//   .catch((error) => {
+//     console.error('MongoDB connection error:', error);
+//   });
 
-db.once("open", () => {
-  console.log("db is connected..");
-});
 
-module.exports = db;
+// module.exports = db;
+
+
+const mongoose = require('mongoose');
+
+// Define your MongoDB connection URI here
+const uri = '"mongodb://127.0.0.1:27017/encrypted-timeseries"';
+
+// Additional configuration options if needed
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+
+// Connect to the database
+mongoose.connect(uri, options)
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('MongoDB connection error:', error);
+  });
